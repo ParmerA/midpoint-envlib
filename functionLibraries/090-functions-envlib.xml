@@ -1,0 +1,80 @@
+<functionLibrary xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="95f7dedb-f14c-46a5-9b2a-2a2bcc0cda6a">
+	<name>envlib</name>
+	<description>Functions that let midPoint interact with cloud environments for secrets (i.e. AWS)</description>
+	<function>
+		<name>setCachedSecret</name>
+		<parameter>
+			<name>secretName</name>
+			<type>xsd:string</type>
+		</parameter>
+		<parameter>
+			<name>secretValue</name>
+			<type>t:ProtectedStringType</type>
+		</parameter>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/setCachedSecret.groovy)]]></code>
+		</script>
+	</function>
+	<function>
+		<name>getCachedSecret</name>
+		<parameter>
+			<name>secretName</name>
+			<type>xsd:string</type>
+		</parameter>
+		<returnType>t:ProtectedStringType</returnType>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/getCachedSecret.groovy)]]></code>
+		</script>
+	</function>
+	<function>
+		<name>refreshCachedSecrets</name>
+		<parameter>
+			<name>shouldLog</name>
+			<type>xsd:boolean</type>
+		</parameter>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/refreshCachedSecrets.groovy)]]></code>
+		</script>
+	</function>
+	<function>
+		<name>getSecret</name>
+		<parameter>
+			<name>secretName</name>
+			<type>xsd:string</type>
+		</parameter>
+		<parameter>
+			<name>key</name>
+			<type>xsd:string</type>
+		</parameter>
+		<parameter>
+			<name>bypassCache</name>
+			<type>xsd:boolean</type>
+		</parameter>
+		<returnType>t:ProtectedStringType</returnType>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/getSecret.groovy)]]></code>
+		</script>
+	</function>
+	<function>
+		<name>translateProtectedPropertyString</name>
+		<parameter>
+			<name>property</name>
+			<type>xsd:string</type>
+		</parameter>
+		<returnType>t:ProtectedStringType</returnType>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/translateProtectedPropertyString.groovy)]]></code>
+		</script>
+	</function>
+	<function>
+		<name>translatePropertyString</name>
+		<parameter>
+			<name>property</name>
+			<type>xsd:string</type>
+		</parameter>
+		<returnType>xsd:string</returnType>
+		<script>
+			<code><![CDATA[$(@envlib/common.groovy) $(@envlib/translatePropertyString.groovy)]]></code>
+		</script>
+	</function>
+</functionLibrary>

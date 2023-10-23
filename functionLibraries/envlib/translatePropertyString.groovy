@@ -1,0 +1,1 @@
+return basic.decrypt(envlib.execute("translateProtectedPropertyString", ["property": property]));
