@@ -1,0 +1,29 @@
+<icfc:configurationProperties xmlns:icscscriptedsql="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-scripted-sql/com.evolveum.polygon.connector.scripted.sql.ScriptedSQLConnector">
+	<icscscriptedsql:classpath>.</icscscriptedsql:classpath>
+	<icscscriptedsql:scriptBaseClass>BaseScript</icscscriptedsql:scriptBaseClass>
+	<icscscriptedsql:searchScriptFileName>SearchScript.groovy</icscscriptedsql:searchScriptFileName>
+	<icscscriptedsql:schemaScriptFileName>SchemaScript.groovy</icscscriptedsql:schemaScriptFileName>
+	<icscscriptedsql:testScriptFileName>TestScript.groovy</icscscriptedsql:testScriptFileName>
+	<icscscriptedsql:syncScriptFileName>SyncScript.groovy</icscscriptedsql:syncScriptFileName>
+	<icscscriptedsql:scriptRoots>/path/to/all/scripts/</icscscriptedsql:scriptRoots>
+	<icscscriptedsql:user>
+		<expression>
+			<script>
+				<code>
+					return envlib.execute("translatePropertyString", ["property": "$(resource.example.user)"]);
+				</code>
+			</script>
+		</expression>
+	</icscscriptedsql:user>
+	<icscscriptedsql:password>
+		<expression>
+			<script>
+				<code>
+					return envlib.execute("translateProtectedPropertyString", ["property": "$(resource.example.password)"]);
+				</code>
+			</script>
+		</expression>
+	</icscscriptedsql:password>
+	<icscscriptedsql:jdbcDriver>org.postgresql.Driver</icscscriptedsql:jdbcDriver>
+	<icscscriptedsql:jdbcUrlTemplate>jdbc:postgresql://localhost:5432/postgres</icscscriptedsql:jdbcUrlTemplate>
+</icfc:configurationProperties>
